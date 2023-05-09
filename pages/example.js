@@ -1,22 +1,16 @@
 import { gql, useQuery } from '@apollo/client';
-import * as MENUS from '../constants/menus';
-import { BlogInfoFragment } from '../fragments/GeneralSettings';
 import { NavigationMenu } from 'components';
-import { getNextStaticProps } from '@faustwp/core';
-import { getApolloClient } from '@faustwp/core';
+import { getNextStaticProps , getApolloClient } from '@faustwp/core';
+
+import { BlogInfoFragment } from '../fragments/GeneralSettings';
+import * as MENUS from '../constants/menus';
 
 export default function Page(props) {
     console.log(props.post.page.content);
   const { data } = useQuery(Page.query, {
     variables: Page.variables(),
   });
-  const title = props.title;
-
-  const { title: siteTitle, description: siteDescription } =
-    data?.generalSettings;
-  const primaryMenu = data?.headerMenuItems?.nodes ?? [];
-  const footerMenu = data?.footerMenuItems?.nodes ?? [];
-
+  console.debug(data);
   return <></>;
 }
 
